@@ -170,47 +170,6 @@ public:
 
 
 
-
-	//// === PROJECTION RELATED========================
-	//GraphicObject& setProjection(glm::mat4 projection ) {
-	//
-	//	// If projection is specified, use it
-	//	this->projection = projection;
-	//	objShader->useProgram();
-	//	objShader->setMat4("u_projection",  this->projection);
-	//	return *this;
-	//}
-	//
-	//void setPerspective(float fov, float aspect, float near, float far) {
-	//	this->projection = glm::perspective(glm::radians(fov), aspect, near, far);
-	//	//objShader->useProgram();
-	//	//objShader->setMat4("projection", this->projection);
-	//}
-	//
-	//// === VIEW RELATED ============================
-	//GraphicObject& setView(glm::mat4 view ) {
-	//	this->view = view;
-	//	objShader->useProgram();
-	//	objShader->setMat4("u_view", this->view);
-	//	return *this;
-	//}
-	//
-	//
-	//void translateCam(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f)) {
-	//	// calc. the model matrix for each object and pass it to shader before drawing
-	//	this->view = glm::translate(this->view, position);
-	//	this->setView(this->view);
-	//}
-	//
-	//// === MODEL RELATED ===========================
-	//GraphicObject& setModel(glm::mat4 model) {
-	//	this->model = model;
-	//	objShader->useProgram();
-	//	objShader->setMat4("u_model", this->model);
-	//	return *this;
-	//}
-
-
 	// === MVP RELATED =========================
 
 	void initMVP(glm::mat4 view = glm::mat4(0), glm::mat4 proj = glm::mat4(0)) {
@@ -245,22 +204,7 @@ public:
 		return *this;
 	}
 
-	//GraphicObject& setMVP(glm::mat4 model, glm::vec3 viewPos, glm::vec3 viewDir, float fov, float aspect, float near, float far, glm::vec3 up) {
-	//	bindVertex();
-	//	setModel(model)
-	//		.setView(glm::lookAt(viewPos, viewPos + viewDir, up))
-	//		.setProjection(glm::perspective(glm::radians(fov), aspect, near, far));
-	//	return *this;
-	//}
-	//
-	//GraphicObject& setMVP() {
-	//
-	//	bindVertex();
-	//	setModel(this->model)
-	//		.setView(this->view)
-	//		.setProjection(this->projection);
-	//	return *this;
-	//}
+
 
 	glm::mat4 getModel() const { return this->model; }
 	glm::mat4 getView() const { return this->view;  }
@@ -287,9 +231,8 @@ public:
 		this->setMVP(this->model, this->view, this->projection);
 	}
 
-	void scale(float value) {
-		this->scale(value, value, value);
-	}
+	// Apply equal value to scale
+	void scale(float value) {this->scale(value, value, value);}
 
 	void resetModel() {
 		this->model = glm::mat4(1.0f);
@@ -307,11 +250,9 @@ public:
 
 	void draw(){
 
-		// render boxes
-		//this->bindVertex();
+
 		if (hasIBO) glDrawElements(GL_TRIANGLES, (int)indices.size(), GL_UNSIGNED_INT, 0);
 		else		glDrawArrays(GL_TRIANGLES, 0, verticesInfo.size());
-		//this->unbindVertex();
 
 	}
 

@@ -56,17 +56,6 @@ public:
 
 
 
-		//glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-		//glm::mat4 view = glm::mat4(1.0f);
-		//rectObject->initMVP();
-		//rectObject->setMVP(
-		//	glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.5f, 1.0f, 0.0f)),
-		//	glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f)),
-		//	glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f)
-		//);
-
-
-
 
 		// ================= Cube Object Draw =======================	
 		cubeObject = make_unique<GraphicObject>(GetCubeMesh());
