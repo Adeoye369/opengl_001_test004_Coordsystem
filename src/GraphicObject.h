@@ -245,22 +245,7 @@ public:
 		return *this;
 	}
 
-	//GraphicObject& setMVP(glm::mat4 model, glm::vec3 viewPos, glm::vec3 viewDir, float fov, float aspect, float near, float far, glm::vec3 up) {
-	//	bindVertex();
-	//	setModel(model)
-	//		.setView(glm::lookAt(viewPos, viewPos + viewDir, up))
-	//		.setProjection(glm::perspective(glm::radians(fov), aspect, near, far));
-	//	return *this;
-	//}
-	//
-	//GraphicObject& setMVP() {
-	//
-	//	bindVertex();
-	//	setModel(this->model)
-	//		.setView(this->view)
-	//		.setProjection(this->projection);
-	//	return *this;
-	//}
+
 
 	glm::mat4 getModel() const { return this->model; }
 	glm::mat4 getView() const { return this->view;  }
