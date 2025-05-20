@@ -54,7 +54,7 @@ public:
 		rectObject->initShader("src/basic01.shader");
 		rectObject->initTexture("images/picture186.png");
 
-
+		//
 
 		//glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
 		//glm::mat4 view = glm::mat4(1.0f);
