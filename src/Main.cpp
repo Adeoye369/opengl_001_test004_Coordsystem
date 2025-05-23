@@ -6,23 +6,22 @@
 
 #include "Renderer.h"
 #include "PrimitiveMesh.h"
+#include "Camera.h"
 
-int SCR_WIDTH = 800;
-int SCR_HEIGHT = 600;
 
 class RenderTriangle : public Renderer {
 
 public:
+	Renderer::Renderer;
+
 	unique_ptr<GraphicObject> triangleObject;
 	unique_ptr<GraphicObject> rectObject;
 	unique_ptr<GraphicObject> cubeObject;
 
 
-
-	Renderer::Renderer;
-
 	void setupDraw() override{
 		Renderer::setupDraw();
+
 
 		glEnable(GL_DEPTH_TEST);
 
@@ -78,6 +77,15 @@ public:
 	void draw() override {
 		Renderer::draw();
 		
+		// per-frame time logic
+ // --------------------
+		float currentFrame = static_cast<float>(glfwGetTime());
+		deltaTime = currentFrame - lastFrame;
+		lastFrame = currentFrame;
+
+		// input
+		// -----
+		processInput(getWindow(), deltaTime);
 
 		glClearColor(0.1f, 0.5f, 0.5f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -88,9 +96,10 @@ public:
 		float camZ = cos(glfwGetTime()) * radius;
 
 		glm::mat4 camView;
-		camView = glm::lookAt(glm::vec3(camX, 0.0, camZ), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
+		//camView = glm::lookAt(glm::vec3(camX, 0.0, camZ), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
+		camView = cam.GetViewMatrix();
 
-		cubeObject->initMVP( camView);
+		cubeObject->initMVP(camView);
 		cubeObject->rotate((float)glfwGetTime()*5.0f, glm::vec3(0.0f, 1.0f, 0.0f));
 		cubeObject->scale(0.5f);
 
@@ -123,7 +132,9 @@ public:
 		rectObject->draw();
 	}
 
-	virtual ~RenderTriangle(){}
+	virtual ~RenderTriangle(){
+	
+	}
 };
 
 
@@ -145,5 +156,5 @@ int main()
 	}
 
 
-
+	
 }
