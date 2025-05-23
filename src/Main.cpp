@@ -26,25 +26,6 @@ public:
 
 		glEnable(GL_DEPTH_TEST);
 
-		//// Vertices
-		//vector<VertexInfo> triangleVertices;
-		//// TODO: set layout order in VertexInfo
-		//// 
-		//								// Position      // texCoord
-		//VertexInfo::attribComponentCount = { 3,  2 };
-	
-		//triangleVertices.push_back({ -0.5f, -0.5f, 0.0f, 1.0f, 1.0f });
-		//triangleVertices.push_back({ 0.5f, -0.5f, 0.0f, 1.0f, 0.0f });
-		//triangleVertices.push_back({ 0.0f, 0.5f, 0.0f,  0.0f, 0.0f });
-		//
-		//triangleObject = make_unique<GraphicObject>(triangleVertices);
-		//triangleObject->initShader("src/basic01.shader");
-		//triangleObject->initTexture("images/wall.jpg");
-		//triangleObject->objShader->setVec3("uColor", 0.1f, 0.5f, 1.0f);
-		//
-		//triangleObject->translate(glm::vec3(0.5f, 0.0f, 0.0f));
-		//triangleObject->rotate(180.0f, glm::vec3(0.0f, 0.0f, 1.0f));
-
 
 			//=============== Rectangle Object ==================================
 
