@@ -29,6 +29,8 @@ public:
 		
 		mPosition = pos;
 		mWorldUp = up;
+		mYaw = yaw;
+		mPitch = pitch;
 
 		updateCamVector();
 	}
@@ -75,8 +77,8 @@ public:
 	}
 
 	void updateCamVector() {
+		
 		glm::vec3 front;
-
 		front.x = cos(glm::radians(mYaw)) * cos(glm::radians(mPitch));
 		front.y = sin(glm::radians(mPitch));
 		front.z = sin(glm::radians(mYaw)) * cos(glm::radians(mPitch));
