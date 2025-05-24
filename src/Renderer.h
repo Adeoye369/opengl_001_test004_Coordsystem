@@ -11,9 +11,6 @@
 #include "Texture.h"
 #include "Camera.h"
 
-
-
-
 int SCR_WIDTH = 800;
 int SCR_HEIGHT = 600;
 
@@ -84,18 +81,11 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 
 class RendererWindow {
 
-	
-
 	int width;
 	int height;
 	GLFWwindow* win{ nullptr };
 
 public:
-	RendererWindow() {
-		width = 800;
-		height = 600;
-		win = nullptr;
-	}
 
 
 	// Constructor
@@ -153,19 +143,17 @@ public:
 
 
 
-class Renderer : public RendererWindow{
+class Renderer {
 
 public:
-	RendererWindow::RendererWindow;
 
 	virtual void setupDraw() {};
 
-	virtual void draw() {}
+	virtual void draw(GLFWwindow* win) {}
 
 	virtual ~Renderer() {
 		glfwTerminate();
 	}
-
 
 };
 

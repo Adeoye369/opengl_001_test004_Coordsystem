@@ -74,8 +74,8 @@ public:
 
 	}
 
-	void draw() override {
-		Renderer::draw();
+	void draw(GLFWwindow* win) override {
+		Renderer::draw(win);
 		
 		// per-frame time logic
  // --------------------
@@ -85,7 +85,7 @@ public:
 
 		// input
 		// -----
-		processInput(getWindow(), deltaTime);
+		processInput(win, deltaTime);
 
 		glClearColor(0.1f, 0.5f, 0.5f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -142,17 +142,17 @@ public:
 int main()
 {
 
-	RendererWindow win(800, 600, "some title");
+	RendererWindow rendererWindow(800, 600, "some title");
 
 	RenderTriangle triangle;
 	triangle.setupDraw();
 
-	while (!win.mainloop()) {
+	while (!rendererWindow.mainloop()) {
 
-		triangle.draw();
+		triangle.draw(rendererWindow.getWindow());
 
-		win.swapBuffers();
-		win.pollEvents();
+		rendererWindow.swapBuffers();
+		rendererWindow.pollEvents();
 	}
 
 
